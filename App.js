@@ -14,16 +14,19 @@ import Shimmer from "./src/components/Shimmer";
 import { Provider } from "react-redux";
 import store from "./src/utils/store";
 import Cart from "./src/components/Cart";
+import "./index.css";
 
-const AppLayout = () => (
-  <div className="bg-red-500">
-    <Provider store={store}>
-      <Header />
-      <Outlet />
-      <Footer />
-    </Provider>
-  </div>
-);
+function AppLayout() {
+  return (
+    <div className="bg-red-500">
+      <Provider store={store}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </Provider>
+    </div>
+  );
+}
 
 const Instamart = lazy(() => import("./src/components/Instamart"));
 

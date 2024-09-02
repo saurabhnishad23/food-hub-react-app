@@ -9,23 +9,31 @@ import useOnline from "../utils/useOnline";
 const Body = () => {
   const [resData, setResData] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [searchInput, setSearchInput] = useState();
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getRestaurant();
-  }, [searchInput]);
+  }, []); //[searchInput]
 
   async function getRestaurant() {
-    const response = await fetch(FETCH_RESTAURANT_URL);
-    const json = await response.json();
-    console.log(json);
-    setResData(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    try {
+      const response = await fetch(FETCH_RESTAURANT_URL);
+      const json = await response.json();
+      console.log(json);
+      setResData(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
 
-    setFilteredRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      setFilteredRestaurants(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.error("failed to fetch", error);
+      setResData([]);
+      setFilteredRestaurants([]);
+    }
   }
 
   const isOnline = useOnline();
@@ -42,6 +50,7 @@ const Body = () => {
   return filteredRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
+    // return (
     <>
       <div className="p-3 bg-green-400 rounded-sm">
         <input

@@ -683,6 +683,6 @@ $RefreshReg$(_c1, "Instamart");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","a59def013504367":"21dqq","eee1b7e9fb7b21db":"6AEwr"}]},["5u83V","1xC6H"], null, "parcelRequire2d53")
+},{"a59def013504367":"21dqq","eee1b7e9fb7b21db":"6AEwr","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["5u83V","1xC6H"], null, "parcelRequire2d53")
 
 //# sourceMappingURL=Instamart.0762395e.js.map
